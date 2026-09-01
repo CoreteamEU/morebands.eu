@@ -21,11 +21,52 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
+  background-color: var(--paper);
   font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
   line-height: 1.55;
+}
+
+/* The game's own paper: shared/assets/genres/ui.atlas/startscenebg.jpg, multiplied
+   over the cream so the sheet keeps this site's warmth instead of the app's white.
+   A fixed pseudo-element rather than background-attachment, which iOS Safari
+   repaints badly on every scroll. */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  background-color: var(--paper);
+  background-image: url("img/paper.jpg");
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Fibre and a soft edge shadow, so the sheet reads as paper rather than as a tint. */
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.55;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 253, 247, 0.85), transparent 62%),
+    radial-gradient(100% 70% at 50% 100%, rgba(40, 32, 29, 0.07), transparent 60%),
+    repeating-linear-gradient(
+      101deg,
+      rgba(40, 32, 29, 0.018) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      7deg,
+      rgba(40, 32, 29, 0.014) 0 1px,
+      transparent 1px 4px
+    );
+  pointer-events: none;
 }
 
 img {
@@ -84,6 +125,42 @@ h3 {
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+.announce {
+  border-bottom: 1px solid var(--line);
+  background: rgba(77, 143, 100, 0.12);
+  color: var(--ink);
+  text-align: center;
+}
+
+.announce p {
+  width: min(calc(100% - 3rem), var(--content));
+  margin: 0 auto;
+  padding: 0.7rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.announce-tag {
+  display: inline-block;
+  margin-right: 0.55rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 100px;
+  background: var(--green);
+  color: #fffdf7;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: 0.08em;
+}
+
+.announce a {
+  margin-left: 0.4rem;
+  color: var(--red-dark);
+  font-weight: 800;
+  text-underline-offset: 0.25em;
 }
 
 .site-header,
@@ -172,6 +249,7 @@ footer a:focus-visible,
 }
 
 .hero {
+  position: relative;
   min-height: min(820px, calc(100vh - 90px));
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
@@ -227,18 +305,12 @@ footer a:focus-visible,
   margin: 0;
 }
 
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -6% 8% 8% -8%;
-  border-radius: 48% 52% 44% 56%;
-  background: var(--yellow);
-  transform: rotate(-4deg);
-}
-
 .hero-visual img {
   width: 100%;
+  /* The markup carries width/height attributes to reserve space; without an
+     explicit `height: auto` that presentational height wins over aspect-ratio
+     and the photo renders as a tall crop. */
+  height: auto;
   aspect-ratio: 4 / 3;
   border: 3px solid var(--ink);
   border-radius: 2.2rem 1rem 2.6rem 1.4rem;
@@ -259,6 +331,7 @@ footer a:focus-visible,
 }
 
 .section {
+  position: relative;
   padding-block: clamp(5rem, 10vw, 9rem);
   border-top: 1px solid var(--line);
 }
@@ -277,7 +350,7 @@ footer a:focus-visible,
 
 .mode-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -286,9 +359,9 @@ footer a:focus-visible,
 }
 
 .mode {
-  min-height: 280px;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  background: #fffaf1;
+  min-height: 300px;
+  padding: clamp(1.35rem, 2.4vw, 2.1rem);
+  background: rgba(255, 253, 247, 0.72);
 }
 
 .mode p {
@@ -296,9 +369,13 @@ footer a:focus-visible,
   color: var(--muted);
 }
 
+.mode h3 {
+  font-size: 1.55rem;
+}
+
 .mode-number {
   display: block;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   color: var(--red);
   font-size: 0.82rem;
   font-weight: 850;
@@ -360,6 +437,123 @@ footer a:focus-visible,
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.05rem;
   font-weight: 700;
+}
+
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.75rem 2.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.privacy-grid li {
+  padding-top: 1.1rem;
+  border-top: 3px solid var(--ink);
+}
+
+.privacy-grid h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.privacy-grid p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.privacy-footnote {
+  max-width: 640px;
+  margin: 3rem 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.privacy-footnote a {
+  color: var(--red-dark);
+  font-weight: 700;
+  text-underline-offset: 0.22em;
+}
+
+.android {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.android-copy > p {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.android-status {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 34rem;
+  margin: 2.25rem 0 1.75rem;
+  padding: 1.4rem 1.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 1.1rem;
+  background: rgba(255, 253, 247, 0.7);
+  list-style: none;
+}
+
+.android-status li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  font-size: 0.99rem;
+}
+
+.android-status span {
+  flex: 0 0 auto;
+  min-width: 6.9rem;
+  padding: 0.14rem 0.55rem;
+  border-radius: 100px;
+  background: var(--green);
+  color: #fffdf7;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.android-status li:nth-child(3) span {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.android-status li:nth-child(4) span {
+  background: var(--blue);
+}
+
+.android-note {
+  max-width: 44ch;
+  font-size: 0.98rem;
+}
+
+.android-note a {
+  color: var(--red-dark);
+  font-weight: 750;
+  text-underline-offset: 0.22em;
+}
+
+.android-visual {
+  display: grid;
+  place-items: center;
+}
+
+.android-visual img {
+  width: min(220px, 60%);
+  height: auto;
+  border-radius: 2rem;
+  border: 3px solid var(--ink);
+  transform: rotate(-3deg);
 }
 
 .story {
@@ -426,6 +620,7 @@ footer a:focus-visible,
 }
 
 .final-cta {
+  position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -472,6 +667,123 @@ footer nav {
   gap: 1.5rem;
 }
 
+/* ---------------------------------------------------------------- motion */
+
+/* The crow and the critters are the app's own `PaperBackgroundView` decorations
+   (ios/SpriteKit/PaperBackgroundView.swift). Both lanes are inert overlays: they
+   never take a click and never affect layout, so removing the script leaves the
+   page exactly as it is. */
+.sky,
+.critter-lane {
+  position: absolute;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sky {
+  z-index: 3;
+  inset: 0;
+}
+
+.critter-lane {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 150px;
+}
+
+.final-cta .critter-lane {
+  bottom: 3px;
+  border-radius: 0 0 1.2rem 1.2rem;
+}
+
+.hero-copy,
+.hero-visual,
+.genre-gallery,
+.android-copy,
+.android-visual,
+.final-cta > *:not(.critter-lane) {
+  position: relative;
+  z-index: 1;
+}
+
+.crow,
+.critter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  opacity: 0;
+  will-change: transform;
+}
+
+.crow {
+  height: 62px;
+}
+
+.critter {
+  height: 84px;
+}
+
+.critter-lane[data-critter="piano"] .critter {
+  height: 74px;
+}
+
+/* Scroll-reveal: opt-in, added by the script only when it can also remove it,
+   so no-JS and reduced-motion visitors never meet a hidden section. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 0.68, 0.32, 1);
+}
+
+.wiggle {
+  animation: wiggle 7s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 76%, 100% { transform: rotate(0deg); }
+  80% { transform: rotate(-3.5deg); }
+  84% { transform: rotate(2.5deg); }
+  88% { transform: rotate(-2deg); }
+  92% { transform: rotate(1.2deg); }
+  96% { transform: rotate(-0.6deg); }
+}
+
+.genre {
+  transition: transform 350ms cubic-bezier(0.22, 0.68, 0.32, 1);
+}
+
+.genre:hover {
+  transform: rotate(-0.4deg);
+}
+
+.privacy-grid li {
+  transition: transform 250ms ease;
+}
+
+.privacy-grid li:hover {
+  transform: translateY(-3px);
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 1100px) {
+  .mode-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .privacy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .site-header nav {
     display: none;
@@ -498,6 +810,19 @@ footer nav {
     margin-bottom: 2rem;
   }
 
+  .android {
+    grid-template-columns: 1fr;
+  }
+
+  .android-visual {
+    order: -1;
+    justify-items: start;
+  }
+
+  .android-visual img {
+    width: 130px;
+  }
+
   .story,
   .parent-section {
     grid-template-columns: 1fr;
@@ -522,6 +847,16 @@ footer nav {
   .final-cta,
   footer {
     width: min(calc(100% - 2rem), var(--content));
+  }
+
+  .announce p {
+    width: min(calc(100% - 2rem), var(--content));
+    font-size: 0.88rem;
+  }
+
+  .announce a {
+    display: block;
+    margin-left: 0;
   }
 
   .site-header {
@@ -562,6 +897,11 @@ footer nav {
     min-height: 230px;
   }
 
+  .privacy-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
   .parent-points {
     grid-template-columns: 1fr;
   }
@@ -583,6 +923,18 @@ footer nav {
     grid-column: auto;
   }
 
+  .critter-lane {
+    height: 110px;
+  }
+
+  .critter {
+    height: 62px;
+  }
+
+  .crow {
+    height: 46px;
+  }
+
   footer {
     align-items: center;
     flex-direction: column;
@@ -596,7 +948,25 @@ footer nav {
   }
 
   .button,
-  .genre img {
+  .genre,
+  .genre img,
+  .privacy-grid li {
     transition: none;
+  }
+
+  .wiggle {
+    animation: none;
+  }
+
+  .reveal,
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .sky,
+  .critter-lane {
+    display: none;
   }
 }
