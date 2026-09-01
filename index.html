@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="More Bands is a hand-painted musical playground where children can hear, match, and mix real instrument parts across five playful genres. No ads, no tracking, no account — and coming to Android this year."
+      content="More Bands is a hand-painted musical playground where children can hear, match, and mix real instrument parts across five playful genres. Drawn and played entirely by people, with no AI. On iPhone and iPad now, Android phones and tablets later this year."
     />
     <meta name="theme-color" content="#fbf5ea" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="More Bands — hear how a band fits together" />
     <meta
       property="og:description"
-      content="A hand-painted musical playground with real instruments, made for children and grown-ups to explore together. Nothing is collected, nothing leaves the device."
+      content="A hand-painted musical playground with real instruments, made for children and grown-ups to explore together. No AI, no tracking, nothing leaves the device."
     />
     <meta property="og:url" content="https://morebands.eu/" />
     <meta
@@ -27,6 +27,27 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <svg class="mark-sprite" aria-hidden="true" focusable="false">
+      <symbol id="mark-apple" viewBox="0 0 24 24">
+        <path
+          d="M17.05 12.54c-.03-2.9 2.37-4.29 2.47-4.36-1.35-1.97-3.44-2.24-4.19-2.27-1.78-.18-3.48 1.05-4.38 1.05-.91 0-2.3-1.02-3.78-1-1.94.03-3.73 1.13-4.73 2.87-2.02 3.5-.52 8.68 1.45 11.52.96 1.39 2.11 2.95 3.61 2.9 1.46-.06 2-.94 3.76-.94s2.25.94 3.78.91c1.56-.03 2.55-1.42 3.5-2.81 1.11-1.61 1.56-3.17 1.59-3.25-.04-.02-3.04-1.17-3.07-4.62M14.29 3.9c.8-.97 1.34-2.32 1.19-3.66-1.15.05-2.55.77-3.37 1.74-.74.86-1.39 2.23-1.22 3.54 1.29.1 2.6-.65 3.4-1.62"
+        />
+      </symbol>
+      <symbol id="mark-android" viewBox="0 0 24 24">
+        <path
+          fill-rule="evenodd"
+          d="M3.5 18.6a8.5 8.5 0 0 1 17 0zM10.4 14.7a1.2 1.2 0 1 0-2.4 0 1.2 1.2 0 0 0 2.4 0m5.6 0a1.2 1.2 0 1 0-2.4 0 1.2 1.2 0 0 0 2.4 0"
+        />
+        <path
+          d="M6.8 6.3 9.4 10.7M17.2 6.3 14.6 10.7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+      </symbol>
+    </svg>
 
     <div class="announce">
       <p>
@@ -78,6 +99,7 @@
             <li>No ads</li>
             <li>No tracking</li>
             <li>No account</li>
+            <li>No AI art or music</li>
             <li>Nothing leaves the device</li>
           </ul>
         </div>
@@ -91,6 +113,31 @@
           />
           <figcaption>Country is included in the free version.</figcaption>
         </figure>
+      </section>
+
+      <section class="platforms" aria-labelledby="platforms-title">
+        <h2 id="platforms-title" class="visually-hidden">Where you can play</h2>
+        <div class="platform">
+          <svg class="platform-mark" aria-hidden="true" focusable="false">
+            <use href="#mark-apple" />
+          </svg>
+          <div>
+            <p class="platform-name">iPhone and iPad</p>
+            <p class="platform-state">On the App Store now, as a free version and a full one.</p>
+          </div>
+        </div>
+        <div class="platform">
+          <svg class="platform-mark" aria-hidden="true" focusable="false">
+            <use href="#mark-android" />
+          </svg>
+          <div>
+            <p class="platform-name">Android phones and tablets</p>
+            <p class="platform-state">
+              Coming later this year.
+              <a href="#android">What is coming <span aria-hidden="true">→</span></a>
+            </p>
+          </div>
+        </div>
       </section>
 
       <section class="section interaction" id="how-it-works">
@@ -283,6 +330,9 @@
         </div>
         <div class="android-visual">
           <img src="img/more-bands-icon.png" alt="" width="180" height="180" loading="lazy" />
+          <svg class="platform-mark platform-mark-big" aria-hidden="true" focusable="false">
+            <use href="#mark-android" />
+          </svg>
         </div>
         <div class="critter-lane" aria-hidden="true" data-critter-lane data-critter="piano">
           <img class="critter" src="img/piano-off.png" alt="" width="127" height="128" />
@@ -308,6 +358,11 @@
           <p>
             The result is closer to an interactive picture book and a tiny
             mixing desk than to a conventional children's game.
+          </p>
+          <p class="no-ai">
+            <strong>No AI was used to create the art or the music in this app.</strong>
+            Every character was drawn and colored by hand on paper, and every
+            part you hear was played by a musician into a microphone.
           </p>
         </div>
       </section>
@@ -342,7 +397,17 @@
         <div>
           <p class="eyebrow">Start with one complete band</p>
           <h2>Try the Country stage for free.</h2>
-          <p>No subscription. No advertising. Available for iPhone and iPad, with Android on the way.</p>
+          <p>
+            No subscription, no advertising, and no AI in the artwork or the
+            music. On iPhone and iPad today; Android phones and tablets later
+            this year.
+          </p>
+          <p class="cta-platforms">
+            <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-apple" /></svg>
+            <span>iPhone · iPad</span>
+            <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-android" /></svg>
+            <span>Android phone · tablet <em>soon</em></span>
+          </p>
         </div>
         <div class="final-actions">
           <a class="button" href="https://apps.apple.com/app/id760842919">Try More Bands Lite</a>

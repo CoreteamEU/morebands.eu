@@ -268,12 +268,17 @@
 
     var targets = document.querySelectorAll(
       ".section-heading, .mode, .genre, .privacy-grid li, .android-status," +
-        " .android-note, .story-copy, .story-photo, .parent-points div, .final-cta"
+        " .android-note, .story-copy, .story-photo, .parent-points div," +
+        " .platform, .no-ai, .final-cta"
     );
     if (!targets.length) return;
 
+    var hidden = [];
+    var reported = false;
+
     var observer = new IntersectionObserver(
       function (entries) {
+        reported = true;
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           entry.target.classList.add("reveal-in");
@@ -289,8 +294,24 @@
       if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
       el.classList.add("reveal");
       el.style.transitionDelay = (i % 4) * 70 + "ms";
+      hidden.push(el);
       observer.observe(el);
     });
+
+    /* Hiding content and waiting for a callback to bring it back is only safe
+       if the callback is certain to arrive. An IntersectionObserver always
+       reports its targets' initial state, so silence here means it is not
+       running at all (a throttled background tab is one way) — and every
+       revealed section would stay invisible for good. Undo the effect instead
+       of betting the page's content on it. */
+    window.setTimeout(function () {
+      if (reported) return;
+      observer.disconnect();
+      hidden.forEach(function (el) {
+        el.classList.remove("reveal");
+        el.style.transitionDelay = "";
+      });
+    }, 1500);
   }
 
   function init() {
