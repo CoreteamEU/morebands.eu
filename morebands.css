@@ -991,15 +991,6 @@ footer nav {
   line-height: 1.7;
 }
 
-/* Deliberately loud: an unfilled value must not survive to a published page. */
-.todo {
-  padding: 0.05em 0.4em;
-  border-radius: 0.3rem;
-  background: var(--yellow);
-  color: var(--ink);
-  font-weight: 800;
-}
-
 .legal-back {
   display: inline-block;
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
