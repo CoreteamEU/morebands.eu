@@ -532,8 +532,22 @@ footer a:focus-visible,
   background: var(--blue);
 }
 
+.android-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.android-cta .button {
+  flex: 0 0 auto;
+}
+
 .android-note {
+  flex: 1 1 22rem;
   max-width: 44ch;
+  margin-bottom: 0;
   font-size: 0.98rem;
 }
 
@@ -1203,6 +1217,15 @@ footer nav {
 
   .cta-platforms {
     justify-content: center;
+  }
+
+  .android-cta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .android-cta .button {
+    text-align: center;
   }
 
   .announce p {
