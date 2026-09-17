@@ -55,13 +55,14 @@
     var timer = null;
     var first = true;
 
-    /* crow00 / crow01 are drawn facing left, so the flip is applied on the
-       left-to-right crossing rather than the other way round. */
+    /* crow00 / crow01 are drawn facing right, so the flip is applied on the
+       right-to-left crossing. */
     function fly() {
       var box = lane.getBoundingClientRect();
       if (!box.width || !box.height) return schedule();
 
       var toRight = Math.random() < 0.5;
+      var flipped = !toRight;
       var size = crow.offsetHeight || 62;
       var span = size * 1.4;
       var startX = toRight ? -span : box.width + span;
@@ -75,7 +76,7 @@
 
       running = true;
       crow.style.opacity = "1";
-      place(crow, startX, baseY, toRight);
+      place(crow, startX, baseY, flipped);
 
       var frame = 0;
       flapping = window.setInterval(function () {
@@ -88,7 +89,7 @@
         var t = Math.min(1, (now - began) / duration);
         var x = startX + (endX - startX) * t;
         var y = baseY + Math.sin(t * cycles * Math.PI * 2 + phase) * amplitude;
-        place(crow, x, y, toRight);
+        place(crow, x, y, flipped);
         if (t < 1) {
           window.requestAnimationFrame(step);
           return;
