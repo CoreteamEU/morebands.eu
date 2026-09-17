@@ -320,8 +320,12 @@
     country: {
       title: "Country",
       video: "videos/country.mp4",
-      type: "video/mp4",
-      description: "Hand-painted animation and live instruments from the app."
+      type: "video/mp4"
+    },
+    "hip-hop": {
+      title: "Hip-Hop",
+      video: "videos/hiphop.mp4",
+      type: "video/mp4"
     }
   };
 
@@ -331,19 +335,14 @@
 
     var video = dialog.querySelector("video");
     var titleEl = dialog.querySelector("#genre-video-title");
-    var descEl = dialog.querySelector("#genre-video-description");
     var closeBtn = dialog.querySelector(".video-dialog-close");
     var lastFocused = null;
 
     function openModal(trigger, entry) {
       lastFocused = trigger;
       var title = entry.title || "Genre preview";
-      var description =
-        entry.description ||
-        "Hand-painted animation and live instruments from the app.";
 
       if (titleEl) titleEl.textContent = title;
-      if (descEl) descEl.textContent = description;
 
       if (video && entry.video) {
         while (video.firstChild) {
@@ -444,13 +443,6 @@
 
         figure.insertBefore(button, img);
         button.appendChild(img);
-
-        var pill = document.createElement("span");
-        pill.className = "genre-play-pill";
-        pill.setAttribute("aria-hidden", "true");
-        pill.innerHTML =
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span>Preview</span>';
-        button.appendChild(pill);
 
         button.addEventListener("click", function (e) {
           e.preventDefault();

@@ -462,43 +462,6 @@ footer a:focus-visible,
   pointer-events: none;
 }
 
-.genre-play-pill {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.75rem;
-  border: 2px solid var(--ink);
-  border-radius: 100px;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 750;
-  box-shadow: 0 4px 12px rgba(40, 32, 29, 0.15);
-  transition:
-    background-color 150ms ease,
-    color 150ms ease,
-    border-color 150ms ease,
-    transform 150ms ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.genre-play-pill svg {
-  fill: currentColor;
-}
-
-.genre-playable:hover .genre-play-pill,
-.genre-trigger:focus-visible .genre-play-pill {
-  background: var(--red);
-  border-color: var(--red-dark);
-  color: #fffdf7;
-  transform: scale(1.06);
-}
-
 /* ------------------------------------------------ genre video modal dialog */
 
 .video-dialog {
@@ -536,15 +499,6 @@ footer a:focus-visible,
 .video-dialog-title-wrap h3 {
   margin: 0;
   font-size: 1.45rem;
-}
-
-.video-dialog-eyebrow {
-  margin: 0 0 0.15rem;
-  font-size: 0.8rem;
-  font-weight: 750;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 .video-dialog-close {
@@ -590,18 +544,6 @@ footer a:focus-visible,
   display: block;
   object-fit: contain;
   background: #000;
-}
-
-.video-dialog-footer {
-  padding: 0.75rem 1.25rem;
-  border-top: 1px solid var(--line);
-  background: var(--paper);
-}
-
-.video-dialog-footer p {
-  margin: 0;
-  font-size: 0.92rem;
-  color: var(--muted);
 }
 
 body.modal-open {
