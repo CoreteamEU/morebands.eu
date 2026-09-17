@@ -8,5 +8,10 @@
     "title": "Hip-Hop",
     "video": "videos/hiphop.mp4",
     "type": "video/mp4"
+  },
+  "reggae": {
+    "title": "Reggae",
+    "video": "videos/raggae.mp4",
+    "type": "video/mp4"
   }
 }

@@ -268,8 +268,8 @@
 
     var targets = document.querySelectorAll(
       ".section-heading, .mode, .genre, .privacy-grid li, .android-status," +
-        " .android-note, .story-copy, .story-photo, .parent-points div," +
-        " .platform, .no-ai, .final-cta"
+      " .android-note, .story-copy, .story-photo, .parent-points div," +
+      " .platform, .no-ai, .final-cta"
     );
     if (!targets.length) return;
 
@@ -326,6 +326,11 @@
       title: "Hip-Hop",
       video: "videos/hiphop.mp4",
       type: "video/mp4"
+    },
+    reggae: {
+      title: "Reggae",
+      video: "videos/raggae.mp4",
+      type: "video/mp4"
     }
   };
 
@@ -372,7 +377,7 @@
       if (video) {
         var playPromise = video.play();
         if (playPromise !== undefined) {
-          playPromise.catch(function () {});
+          playPromise.catch(function () { });
         }
       }
     }
@@ -416,6 +421,21 @@
       }
     });
 
+    var videoLinks = document.querySelectorAll("[data-video-modal]");
+    Array.prototype.forEach.call(videoLinks, function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        var videoSrc =
+          link.getAttribute("data-video-modal") || link.getAttribute("href");
+        var title = link.getAttribute("data-video-title") || "Preview";
+        openModal(link, {
+          title: title,
+          video: videoSrc,
+          type: "video/mp4"
+        });
+      });
+    });
+
     function applyMetadata(catalog) {
       if (!catalog) return;
       Object.keys(catalog).forEach(function (key) {
@@ -424,6 +444,10 @@
 
         var figure = document.querySelector('.genre[data-genre="' + key + '"]');
         if (!figure) return;
+
+        var existingPill = figure.querySelector(".genre-play-pill");
+        if (existingPill) existingPill.remove();
+
         if (figure.querySelector(".genre-trigger")) return;
 
         var img = figure.querySelector("img");
@@ -438,7 +462,7 @@
         button.setAttribute("aria-controls", "genre-video-dialog");
         button.setAttribute(
           "aria-label",
-          "Preview " + (entry.title || key) + " band scene with video and sound"
+          "Play " + (entry.title || key) + " band scene video"
         );
 
         figure.insertBefore(button, img);

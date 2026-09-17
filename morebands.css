@@ -437,6 +437,11 @@ footer a:focus-visible,
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.05rem;
   font-weight: 700;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
 }
 
 .genre-trigger {
@@ -459,7 +464,22 @@ footer a:focus-visible,
 }
 
 .genre-playable figcaption {
+  background: var(--red);
+  border-color: var(--red-dark);
+  color: #fffdf7;
   pointer-events: none;
+}
+
+.genre-playable:hover figcaption,
+.genre-trigger:focus-visible ~ figcaption {
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+  color: #fffdf7;
+  transform: scale(1.04);
+}
+
+.genre-play-pill {
+  display: none !important;
 }
 
 /* ------------------------------------------------ genre video modal dialog */
@@ -586,6 +606,27 @@ body.modal-open {
   color: var(--red-dark);
   font-weight: 700;
   text-underline-offset: 0.22em;
+}
+
+.video-link {
+  color: var(--red-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.video-link:hover,
+.video-link:focus-visible {
+  color: var(--red);
+}
+
+.video-link-icon {
+  display: inline-block;
+  vertical-align: 0px;
+  margin-left: 0.25em;
+  fill: currentColor;
 }
 
 .android {
