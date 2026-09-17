@@ -201,23 +201,23 @@
         </div>
 
         <div class="genre-gallery">
-          <figure class="genre genre-wide">
+          <figure class="genre genre-wide" data-genre="hip-hop">
             <img src="img/hip-hop-band.jpg" alt="A hand-painted Hip-Hop band on a graffiti-covered street" loading="lazy" />
             <figcaption>Hip-Hop</figcaption>
           </figure>
-          <figure class="genre">
+          <figure class="genre" data-genre="country">
             <img src="img/country-band.jpg" alt="A hand-painted Country band in green hills" loading="lazy" />
             <figcaption>Country</figcaption>
           </figure>
-          <figure class="genre">
+          <figure class="genre" data-genre="reggae">
             <img src="img/reggae-band.jpg" alt="A hand-painted Reggae band on a beach" loading="lazy" />
             <figcaption>Reggae</figcaption>
           </figure>
-          <figure class="genre">
+          <figure class="genre" data-genre="metal">
             <img src="img/metal-band.jpg" alt="A hand-painted Heavy Metal band playing on a moon-like landscape" loading="lazy" />
             <figcaption>Heavy Metal</figcaption>
           </figure>
-          <figure class="genre genre-wide">
+          <figure class="genre genre-wide" data-genre="waltz">
             <img src="img/waltz-band.jpg" alt="A hand-painted Psychedelic Waltz band in an old wooden hall" loading="lazy" />
             <figcaption>Psychedelic Waltz</figcaption>
           </figure>
@@ -431,6 +431,32 @@
         </div>
       </section>
     </main>
+
+    <dialog id="genre-video-dialog" class="video-dialog" aria-labelledby="genre-video-title">
+      <div class="video-dialog-inner">
+        <header class="video-dialog-header">
+          <div class="video-dialog-title-wrap">
+            <p class="video-dialog-eyebrow">Scene preview</p>
+            <h3 id="genre-video-title">Country</h3>
+          </div>
+          <button type="button" class="video-dialog-close" aria-label="Close preview">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </header>
+        <div class="video-dialog-player">
+          <video id="genre-video" controls playsinline preload="metadata">
+            <source src="videos/country.mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <footer class="video-dialog-footer">
+          <p id="genre-video-description">Hand-painted animation and live instruments from the app.</p>
+        </footer>
+      </div>
+    </dialog>
 
     <footer>
       <span><a href="https://jurisandersons.eu">Juris Andersons</a> · © Coreteam SIA</span>

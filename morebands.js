@@ -11,7 +11,6 @@
   "use strict";
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (reduceMotion.matches) return;
 
   var rand = function (min, max) {
     return min + Math.random() * (max - min);
@@ -315,7 +314,172 @@
     }, 1500);
   }
 
+  /* -------------------------------------------------- genre video modal */
+
+  var DEFAULT_GENRE_METADATA = {
+    country: {
+      title: "Country",
+      video: "videos/country.mp4",
+      type: "video/mp4",
+      description: "Hand-painted animation and live instruments from the app."
+    }
+  };
+
+  function initGenreModals() {
+    var dialog = document.getElementById("genre-video-dialog");
+    if (!dialog) return;
+
+    var video = dialog.querySelector("video");
+    var titleEl = dialog.querySelector("#genre-video-title");
+    var descEl = dialog.querySelector("#genre-video-description");
+    var closeBtn = dialog.querySelector(".video-dialog-close");
+    var lastFocused = null;
+
+    function openModal(trigger, entry) {
+      lastFocused = trigger;
+      var title = entry.title || "Genre preview";
+      var description =
+        entry.description ||
+        "Hand-painted animation and live instruments from the app.";
+
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = description;
+
+      if (video && entry.video) {
+        while (video.firstChild) {
+          video.removeChild(video.firstChild);
+        }
+        var source = document.createElement("source");
+        source.src = entry.video;
+        var mime = entry.type;
+        if (!mime) {
+          if (entry.video.indexOf(".mp4") !== -1) mime = "video/mp4";
+          else if (entry.video.indexOf(".webm") !== -1) mime = "video/webm";
+          else if (entry.video.indexOf(".mov") !== -1) mime = "video/quicktime";
+        }
+        if (mime) source.type = mime;
+        video.appendChild(source);
+        video.load();
+        video.currentTime = 0;
+      }
+
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute("open", "");
+      }
+      document.body.classList.add("modal-open");
+
+      if (video) {
+        var playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function () {});
+        }
+      }
+    }
+
+    function closeModal() {
+      if (video) {
+        video.pause();
+      }
+      if (typeof dialog.close === "function") {
+        dialog.close();
+      } else {
+        dialog.removeAttribute("open");
+      }
+      document.body.classList.remove("modal-open");
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus();
+      }
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
+
+    dialog.addEventListener("click", function (event) {
+      var rect = dialog.getBoundingClientRect();
+      var isInDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width;
+      if (!isInDialog) {
+        closeModal();
+      }
+    });
+
+    dialog.addEventListener("cancel", function () {
+      if (video) video.pause();
+      document.body.classList.remove("modal-open");
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus();
+      }
+    });
+
+    function applyMetadata(catalog) {
+      if (!catalog) return;
+      Object.keys(catalog).forEach(function (key) {
+        var entry = catalog[key];
+        if (!entry || !entry.video) return;
+
+        var figure = document.querySelector('.genre[data-genre="' + key + '"]');
+        if (!figure) return;
+        if (figure.querySelector(".genre-trigger")) return;
+
+        var img = figure.querySelector("img");
+        if (!img) return;
+
+        figure.classList.add("genre-playable");
+
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "genre-trigger";
+        button.setAttribute("aria-haspopup", "dialog");
+        button.setAttribute("aria-controls", "genre-video-dialog");
+        button.setAttribute(
+          "aria-label",
+          "Preview " + (entry.title || key) + " band scene with video and sound"
+        );
+
+        figure.insertBefore(button, img);
+        button.appendChild(img);
+
+        var pill = document.createElement("span");
+        pill.className = "genre-play-pill";
+        pill.setAttribute("aria-hidden", "true");
+        pill.innerHTML =
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span>Preview</span>';
+        button.appendChild(pill);
+
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          openModal(button, entry);
+        });
+      });
+    }
+
+    if (window.fetch) {
+      fetch("videos/genres.json")
+        .then(function (res) {
+          if (!res.ok) throw new Error("Status " + res.status);
+          return res.json();
+        })
+        .then(function (catalog) {
+          applyMetadata(catalog);
+        })
+        .catch(function () {
+          applyMetadata(DEFAULT_GENRE_METADATA);
+        });
+    } else {
+      applyMetadata(DEFAULT_GENRE_METADATA);
+    }
+  }
+
   function init() {
+    initGenreModals();
+
+    if (reduceMotion.matches) return;
     Array.prototype.forEach.call(
       document.querySelectorAll("[data-crow-lane]"),
       startCrow
