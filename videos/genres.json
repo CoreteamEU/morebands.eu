@@ -18,5 +18,10 @@
     "title": "Heavy Metal",
     "video": "videos/metal.mp4",
     "type": "video/mp4"
+  },
+  "waltz": {
+    "title": "Psychedelic Waltz",
+    "video": "videos/waltz.mp4",
+    "type": "video/mp4"
   }
 }
