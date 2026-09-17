@@ -13,5 +13,10 @@
     "title": "Reggae",
     "video": "videos/raggae.mp4",
     "type": "video/mp4"
+  },
+  "metal": {
+    "title": "Heavy Metal",
+    "video": "videos/metal.mp4",
+    "type": "video/mp4"
   }
 }

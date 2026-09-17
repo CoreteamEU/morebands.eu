@@ -316,24 +316,6 @@
 
   /* -------------------------------------------------- genre video modal */
 
-  var DEFAULT_GENRE_METADATA = {
-    country: {
-      title: "Country",
-      video: "videos/country.mp4",
-      type: "video/mp4"
-    },
-    "hip-hop": {
-      title: "Hip-Hop",
-      video: "videos/hiphop.mp4",
-      type: "video/mp4"
-    },
-    reggae: {
-      title: "Reggae",
-      video: "videos/raggae.mp4",
-      type: "video/mp4"
-    }
-  };
-
   function initGenreModals() {
     var dialog = document.getElementById("genre-video-dialog");
     if (!dialog) return;
@@ -484,11 +466,7 @@
         .then(function (catalog) {
           applyMetadata(catalog);
         })
-        .catch(function () {
-          applyMetadata(DEFAULT_GENRE_METADATA);
-        });
-    } else {
-      applyMetadata(DEFAULT_GENRE_METADATA);
+        .catch(function () {});
     }
   }
 
