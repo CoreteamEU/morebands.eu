@@ -282,6 +282,46 @@ footer a:focus-visible,
   flex-wrap: wrap;
 }
 
+.desktop-handoff {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 480px;
+  margin-top: 1.75rem;
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: rgba(255, 253, 247, 0.8);
+}
+
+.desktop-handoff a {
+  flex: 0 0 auto;
+  border-radius: 0.5rem;
+}
+
+.desktop-handoff a:focus-visible {
+  outline: 3px solid var(--red-dark);
+  outline-offset: 3px;
+}
+
+.desktop-handoff img {
+  width: 132px;
+  height: 132px;
+  border-radius: 0.4rem;
+}
+
+.desktop-handoff p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.desktop-handoff .desktop-handoff-title {
+  margin-bottom: 0.2rem;
+  color: var(--ink);
+  font-weight: 800;
+}
+
 .trust-list {
   display: flex;
   gap: 0.7rem 1.4rem;
@@ -1151,6 +1191,10 @@ footer nav {
 }
 
 @media (max-width: 680px) {
+  .desktop-handoff {
+    display: none;
+  }
+
   .legal {
     width: min(calc(100% - 2rem), 62rem);
   }
