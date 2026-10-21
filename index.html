@@ -23,7 +23,7 @@
     <link rel="canonical" href="https://morebands.eu/" />
     <link rel="icon" href="img/more-bands-icon.png" />
     <link rel="preload" as="image" href="img/paper.jpg" />
-    <link rel="stylesheet" href="morebands.css?v=5" />
+    <link rel="stylesheet" href="morebands.css?v=6" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -51,7 +51,6 @@
 
     <div class="announce">
       <p>
-        <span class="announce-tag">New</span>
         More Bands is now on Android.
         <a href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">Get it on Google Play <span aria-hidden="true">→</span></a>
       </p>
@@ -66,9 +65,8 @@
         <a href="#how-it-works">How it works</a>
         <a href="#genres">Five genres</a>
         <a href="#privacy">Privacy</a>
-        <a href="#android">Android</a>
       </nav>
-      <a class="button button-small" href="https://apps.apple.com/app/id760842919" data-play-href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">
+      <a class="button button-small" href="#get" data-app-store-href="https://apps.apple.com/app/id760842919" data-play-href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">
         Try it free
       </a>
     </header>
@@ -87,29 +85,28 @@
             and explore five very different bands together. Every scene is drawn
             by hand. Every musical part is played by a real musician.
           </p>
-          <div class="hero-actions">
-            <a class="button" href="https://apps.apple.com/app/id760842919" data-play-href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">
-              Get the free app
+          <div class="stores" id="get">
+            <a class="store" href="https://apps.apple.com/app/id760842919">
+              <img class="store-qr" src="img/more-bands-lite-qr.svg" alt="" width="132" height="132" />
+              <span class="store-name">
+                <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-apple" /></svg>
+                <span><small>iPhone and iPad</small>App Store</span>
+              </span>
             </a>
-            <a class="text-link" href="https://apps.apple.com/app/id760551914" data-play-href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">
-              Get all five genres <span aria-hidden="true">→</span>
+            <a class="store" href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">
+              <img class="store-qr" src="img/more-bands-play-qr.svg" alt="" width="132" height="132" />
+              <span class="store-name">
+                <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-android" /></svg>
+                <span><small>Android</small>Google Play</span>
+              </span>
             </a>
           </div>
-          <div class="desktop-handoff">
-            <a href="https://apps.apple.com/app/id760842919" aria-label="Open More Bands Lite on the App Store">
-              <img
-                src="img/more-bands-lite-qr.svg"
-                alt="QR code for More Bands Lite on the App Store"
-                width="132"
-                height="132"
-              />
-            </a>
-            <div>
-              <p class="desktop-handoff-title">Take it to your iPhone or iPad</p>
-              <p>Scan the code with your device’s camera to open the free app on the App Store.</p>
-              <p>On Android? <a href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">Get it on Google Play</a>.</p>
-            </div>
-          </div>
+          <p class="stores-note">
+            <span class="stores-scan">Scan with your phone's camera.</span>
+            The Country band is free. All five come with the
+            <a href="https://apps.apple.com/app/id760551914">full version</a> on iPhone and iPad,
+            or one purchase on Android.
+          </p>
           <ul class="trust-list" aria-label="Parent-friendly features">
             <li>No ads</li>
             <li>No tracking</li>
@@ -128,31 +125,6 @@
           />
           <figcaption>Country is included in the free version.</figcaption>
         </figure>
-      </section>
-
-      <section class="platforms" aria-labelledby="platforms-title">
-        <h2 id="platforms-title" class="visually-hidden">Where you can play</h2>
-        <div class="platform">
-          <svg class="platform-mark" aria-hidden="true" focusable="false">
-            <use href="#mark-apple" />
-          </svg>
-          <div>
-            <p class="platform-name">iPhone and iPad</p>
-            <p class="platform-state">On the App Store now, as a free version and a full one.</p>
-          </div>
-        </div>
-        <div class="platform">
-          <svg class="platform-mark" aria-hidden="true" focusable="false">
-            <use href="#mark-android" />
-          </svg>
-          <div>
-            <p class="platform-name">Android phones and tablets</p>
-            <p class="platform-state">
-              On Google Play now, free with a one-time Full version purchase.
-              <a href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">Get it <span aria-hidden="true">→</span></a>
-            </p>
-          </div>
-        </div>
       </section>
 
       <section class="section interaction" id="how-it-works">
@@ -454,17 +426,22 @@
             No subscription, no advertising, and no AI in the artwork or the
             music. On iPhone and iPad, and on Android phones and tablets.
           </p>
-          <p class="cta-platforms">
-            <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-apple" /></svg>
-            <span>iPhone · iPad</span>
-            <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-android" /></svg>
-            <span>Android phone · tablet</span>
-          </p>
         </div>
-        <div class="final-actions">
-          <a class="button" href="https://apps.apple.com/app/id760842919">Try More Bands Lite</a>
-          <a class="text-link" href="https://apps.apple.com/app/id760551914">View the full version <span aria-hidden="true">→</span></a>
-          <a class="text-link" href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">Get it on Google Play <span aria-hidden="true">→</span></a>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/app/id760842919">
+            <img class="store-qr" src="img/more-bands-lite-qr.svg" alt="" width="132" height="132" loading="lazy" />
+            <span class="store-name">
+              <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-apple" /></svg>
+              <span><small>iPhone and iPad</small>App Store</span>
+            </span>
+          </a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">
+            <img class="store-qr" src="img/more-bands-play-qr.svg" alt="" width="132" height="132" loading="lazy" />
+            <span class="store-name">
+              <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-android" /></svg>
+              <span><small>Android</small>Google Play</span>
+            </span>
+          </a>
         </div>
         <div class="critter-lane" aria-hidden="true" data-critter-lane data-critter="pig">
           <img class="critter" src="img/pig.png" alt="" width="170" height="130" />
@@ -504,6 +481,6 @@
       </nav>
     </footer>
 
-    <script src="morebands.js?v=4" defer></script>
+    <script src="morebands.js?v=5" defer></script>
   </body>
 </html>

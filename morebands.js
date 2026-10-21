@@ -269,7 +269,7 @@
     var targets = document.querySelectorAll(
       ".section-heading, .mode, .genre, .privacy-grid li, .android-status," +
       " .android-note, .story-copy, .story-photo, .parent-points div," +
-      " .platform, .no-ai, .final-cta"
+      " .no-ai, .final-cta"
     );
     if (!targets.length) return;
 
@@ -470,20 +470,25 @@
     }
   }
 
-  /* Store buttons default to the App Store; Android visitors get Google Play
-     instead, since the App Store link is a dead end for them. */
-  function useAndroidStore() {
-    if (!/Android/i.test(navigator.userAgent)) return;
-    Array.prototype.forEach.call(
-      document.querySelectorAll("[data-play-href]"),
-      function (link) {
-        link.href = link.getAttribute("data-play-href");
-      }
-    );
+  /* The header button scrolls to both stores; on a phone or tablet it goes
+     straight to that device's store. iPadOS reports itself as a Mac, so touch
+     support tells the two apart. */
+  function useDeviceStore() {
+    var ua = navigator.userAgent;
+    var attr = /Android/i.test(ua)
+      ? "data-play-href"
+      : /iPhone|iPad|iPod/.test(ua) ||
+          (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
+        ? "data-app-store-href"
+        : null;
+    if (!attr) return;
+    Array.prototype.forEach.call(document.querySelectorAll("[" + attr + "]"), function (link) {
+      link.href = link.getAttribute(attr);
+    });
   }
 
   function init() {
-    useAndroidStore();
+    useDeviceStore();
     initGenreModals();
 
     if (reduceMotion.matches) return;
