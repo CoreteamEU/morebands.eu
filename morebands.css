@@ -6,6 +6,7 @@
   --line: #d8c9b7;
   --red: #d84b3e;
   --red-dark: #a52f28;
+  --red-button: #c23b30;
   --yellow: #efbd32;
   --green: #4d8f64;
   --blue: #247b91;
@@ -127,28 +128,6 @@ h3 {
   transform: translateY(0);
 }
 
-.announce {
-  border-bottom: 1px solid var(--line);
-  background: rgba(77, 143, 100, 0.12);
-  color: var(--ink);
-  text-align: center;
-}
-
-.announce p {
-  width: min(calc(100% - 3rem), var(--content));
-  margin: 0 auto;
-  padding: 0.7rem 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.announce a {
-  margin-left: 0.4rem;
-  color: var(--red-dark);
-  font-weight: 800;
-  text-underline-offset: 0.25em;
-}
-
 .site-header,
 .hero,
 .section,
@@ -177,6 +156,7 @@ footer {
 }
 
 .brand img {
+  flex: 0 0 auto;
   border-radius: 14px;
 }
 
@@ -184,6 +164,27 @@ footer {
   display: flex;
   gap: 1.5rem;
   margin-left: auto;
+}
+
+/* Both stores side by side rather than a guess at the visitor's platform. */
+.header-stores {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.site-header nav + .header-stores {
+  margin-left: 0;
+}
+
+.header-stores .button {
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.header-stores .platform-mark {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .site-header nav a,
@@ -211,7 +212,7 @@ footer a:focus-visible,
   border: 2px solid var(--red-dark);
   border-radius: 100px;
   color: #fffdf7;
-  background: var(--red);
+  background: var(--red-button);
   font-weight: 750;
   text-align: center;
   text-decoration: none;
@@ -515,7 +516,7 @@ footer a:focus-visible,
 }
 
 .genre-playable figcaption {
-  background: var(--red);
+  background: var(--red-button);
   border-color: var(--red-dark);
   color: #fffdf7;
   pointer-events: none;
@@ -592,7 +593,7 @@ footer a:focus-visible,
 
 .video-dialog-close:hover,
 .video-dialog-close:focus-visible {
-  background: var(--red);
+  background: var(--red-button);
   border-color: var(--red-dark);
   color: #fffdf7;
   transform: scale(1.08);
@@ -1262,6 +1263,10 @@ footer nav {
     display: none;
   }
 
+  .site-header nav + .header-stores {
+    margin-left: auto;
+  }
+
   .hero {
     min-height: 0;
     grid-template-columns: 1fr;
@@ -1354,22 +1359,23 @@ footer nav {
     text-align: center;
   }
 
-  .announce p {
-    width: min(calc(100% - 2rem), var(--content));
-    font-size: 0.88rem;
-  }
-
-  .announce a {
-    display: block;
-    margin-left: 0;
-  }
-
   .site-header {
     min-height: 78px;
+    gap: 0.75rem;
   }
 
   .brand span {
     display: none;
+  }
+
+  .brand img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .header-stores .button {
+    padding-inline: 0.75rem;
+    font-size: 0.85rem;
   }
 
   .hero {

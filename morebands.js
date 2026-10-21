@@ -470,25 +470,7 @@
     }
   }
 
-  /* The header button scrolls to both stores; on a phone or tablet it goes
-     straight to that device's store. iPadOS reports itself as a Mac, so touch
-     support tells the two apart. */
-  function useDeviceStore() {
-    var ua = navigator.userAgent;
-    var attr = /Android/i.test(ua)
-      ? "data-play-href"
-      : /iPhone|iPad|iPod/.test(ua) ||
-          (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
-        ? "data-app-store-href"
-        : null;
-    if (!attr) return;
-    Array.prototype.forEach.call(document.querySelectorAll("[" + attr + "]"), function (link) {
-      link.href = link.getAttribute(attr);
-    });
-  }
-
   function init() {
-    useDeviceStore();
     initGenreModals();
 
     if (reduceMotion.matches) return;

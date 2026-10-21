@@ -23,7 +23,7 @@
     <link rel="canonical" href="https://morebands.eu/" />
     <link rel="icon" href="img/more-bands-icon.png" />
     <link rel="preload" as="image" href="img/paper.jpg" />
-    <link rel="stylesheet" href="morebands.css?v=6" />
+    <link rel="stylesheet" href="morebands.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -49,16 +49,9 @@
       </symbol>
     </svg>
 
-    <div class="announce">
-      <p>
-        More Bands is now on Android.
-        <a href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">Get it on Google Play <span aria-hidden="true">→</span></a>
-      </p>
-    </div>
-
     <header class="site-header">
       <a class="brand" href="#top" aria-label="More Bands home">
-        <img src="img/more-bands-icon.png" alt="" width="58" height="58" />
+        <img src="img/more-bands-icon.webp" alt="" width="58" height="58" />
         <span>More Bands</span>
       </a>
       <nav aria-label="Main navigation">
@@ -66,9 +59,16 @@
         <a href="#genres">Five genres</a>
         <a href="#privacy">Privacy</a>
       </nav>
-      <a class="button button-small" href="#get" data-app-store-href="https://apps.apple.com/app/id760842919" data-play-href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands">
-        Try it free
-      </a>
+      <div class="header-stores">
+        <a class="button button-small" href="https://apps.apple.com/app/id760842919" aria-label="Try More Bands free on the App Store">
+          <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-apple" /></svg>
+          <span>App Store</span>
+        </a>
+        <a class="button button-small" href="https://play.google.com/store/apps/details?id=lv.coreteam.moorebands" aria-label="Try More Bands free on Google Play">
+          <svg class="platform-mark" aria-hidden="true" focusable="false"><use href="#mark-android" /></svg>
+          <span>Google Play</span>
+        </a>
+      </div>
     </header>
 
     <main id="main">
@@ -118,10 +118,13 @@
 
         <figure class="hero-visual">
           <img
-            src="img/country-band.jpg"
+            src="img/country-band-960.webp"
+            srcset="img/country-band-640.webp 640w, img/country-band-960.webp 960w, img/country-band-1600.webp 1600w"
+            sizes="(max-width: 900px) calc(100vw - 2rem), 640px"
             alt="The hand-painted Country band playing together in a green landscape"
             width="1366"
             height="1024"
+            fetchpriority="high"
           />
           <figcaption>Country is included in the free version.</figcaption>
         </figure>
@@ -202,23 +205,23 @@
 
         <div class="genre-gallery">
           <figure class="genre genre-wide" data-genre="hip-hop">
-            <img src="img/hip-hop-band.jpg" alt="A hand-painted Hip-Hop band on a graffiti-covered street" loading="lazy" />
+            <img src="img/hip-hop-band-960.webp" srcset="img/hip-hop-band-640.webp 640w, img/hip-hop-band-960.webp 960w, img/hip-hop-band-1600.webp 1600w" sizes="(max-width: 680px) calc(100vw - 2rem), 50vw" width="1600" height="1199" alt="A hand-painted Hip-Hop band on a graffiti-covered street" loading="lazy" />
             <figcaption>Hip-Hop</figcaption>
           </figure>
           <figure class="genre" data-genre="country">
-            <img src="img/country-band.jpg" alt="A hand-painted Country band in green hills" loading="lazy" />
+            <img src="img/country-band-960.webp" srcset="img/country-band-640.webp 640w, img/country-band-960.webp 960w, img/country-band-1600.webp 1600w" sizes="(max-width: 680px) calc(100vw - 2rem), 34vw" width="1600" height="1199" alt="A hand-painted Country band in green hills" loading="lazy" />
             <figcaption>Country</figcaption>
           </figure>
           <figure class="genre" data-genre="reggae">
-            <img src="img/reggae-band.jpg" alt="A hand-painted Reggae band on a beach" loading="lazy" />
+            <img src="img/reggae-band-960.webp" srcset="img/reggae-band-640.webp 640w, img/reggae-band-960.webp 960w, img/reggae-band-1600.webp 1600w" sizes="(max-width: 680px) calc(100vw - 2rem), 34vw" width="1600" height="1199" alt="A hand-painted Reggae band on a beach" loading="lazy" />
             <figcaption>Reggae</figcaption>
           </figure>
           <figure class="genre" data-genre="metal">
-            <img src="img/metal-band.jpg" alt="A hand-painted Heavy Metal band playing on a moon-like landscape" loading="lazy" />
+            <img src="img/metal-band-960.webp" srcset="img/metal-band-640.webp 640w, img/metal-band-960.webp 960w, img/metal-band-1600.webp 1600w" sizes="(max-width: 680px) calc(100vw - 2rem), 34vw" width="1600" height="1199" alt="A hand-painted Heavy Metal band playing on a moon-like landscape" loading="lazy" />
             <figcaption>Heavy Metal</figcaption>
           </figure>
           <figure class="genre genre-wide" data-genre="waltz">
-            <img src="img/waltz-band.jpg" alt="A hand-painted Psychedelic Waltz band in an old wooden hall" loading="lazy" />
+            <img src="img/waltz-band-960.webp" srcset="img/waltz-band-640.webp 640w, img/waltz-band-960.webp 960w, img/waltz-band-1600.webp 1600w" sizes="(max-width: 680px) calc(100vw - 2rem), 50vw" width="1600" height="1199" alt="A hand-painted Psychedelic Waltz band in an old wooden hall" loading="lazy" />
             <figcaption>Psychedelic Waltz</figcaption>
           </figure>
         </div>
@@ -344,7 +347,7 @@
           </div>
         </div>
         <div class="android-visual">
-          <img src="img/more-bands-icon.png" alt="" width="180" height="180" loading="lazy" />
+          <img src="img/more-bands-icon.webp" alt="" width="180" height="180" loading="lazy" />
           <svg class="platform-mark platform-mark-big" aria-hidden="true" focusable="false">
             <use href="#mark-android" />
           </svg>
@@ -357,7 +360,11 @@
       <section class="section story" id="made-by-hand">
         <div class="story-photo">
           <img
-            src="img/making-more-bands.jpg"
+            src="img/making-more-bands-960.webp"
+            srcset="img/making-more-bands-640.webp 640w, img/making-more-bands-960.webp 960w, img/making-more-bands-1600.webp 1600w"
+            sizes="(max-width: 900px) calc(100vw - 2rem), 600px"
+            width="1600"
+            height="1059"
             alt="Colored pencils and original hand-drawn More Bands characters on paper"
             loading="lazy"
           />
@@ -418,7 +425,7 @@
       </section>
 
       <section class="final-cta">
-        <img class="wiggle" src="img/more-bands-icon.png" alt="" width="128" height="128" loading="lazy" />
+        <img class="wiggle" src="img/more-bands-icon.webp" alt="" width="128" height="128" loading="lazy" />
         <div>
           <p class="eyebrow">Start with one complete band</p>
           <h2>Try the Country stage for free.</h2>
@@ -463,10 +470,7 @@
           </button>
         </header>
         <div class="video-dialog-player">
-          <video id="genre-video" controls playsinline preload="metadata">
-            <source src="videos/country.mp4" type="video/mp4" />
-            Your browser does not support HTML5 video.
-          </video>
+          <video id="genre-video" controls playsinline preload="none"></video>
         </div>
       </div>
     </dialog>
@@ -481,6 +485,6 @@
       </nav>
     </footer>
 
-    <script src="morebands.js?v=5" defer></script>
+    <script src="morebands.js?v=6" defer></script>
   </body>
 </html>
