@@ -316,6 +316,12 @@ footer a:focus-visible,
   font-size: 0.9rem;
 }
 
+.desktop-handoff p a {
+  color: var(--red-dark);
+  font-weight: 750;
+  text-underline-offset: 0.22em;
+}
+
 .desktop-handoff .desktop-handoff-title {
   margin-bottom: 0.2rem;
   color: var(--ink);
@@ -715,12 +721,12 @@ body.modal-open {
   text-transform: uppercase;
 }
 
-.android-status li:nth-child(3) span {
+.android-status li:nth-child(2) span {
   background: var(--yellow);
   color: var(--ink);
 }
 
-.android-status li:nth-child(4) span {
+.android-status li:nth-child(3) span {
   background: var(--blue);
 }
 

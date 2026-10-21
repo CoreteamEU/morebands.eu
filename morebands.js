@@ -470,7 +470,20 @@
     }
   }
 
+  /* Store buttons default to the App Store; Android visitors get Google Play
+     instead, since the App Store link is a dead end for them. */
+  function useAndroidStore() {
+    if (!/Android/i.test(navigator.userAgent)) return;
+    Array.prototype.forEach.call(
+      document.querySelectorAll("[data-play-href]"),
+      function (link) {
+        link.href = link.getAttribute("data-play-href");
+      }
+    );
+  }
+
   function init() {
+    useAndroidStore();
     initGenreModals();
 
     if (reduceMotion.matches) return;
